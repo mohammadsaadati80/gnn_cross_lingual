@@ -19,8 +19,9 @@ def load_eval_data(target_test_path):
         for line in fin:
             sentence = line.rstrip()
             seg = sentence.split('\t')
-            eval_data.append(seg[1])
-            eval_label.append(int(seg[0]))
+            if len(seg) > 1:
+                eval_data.append(seg[1])
+                eval_label.append(int(seg[0]))
     return eval_data, eval_label
 
 

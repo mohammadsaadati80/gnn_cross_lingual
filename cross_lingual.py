@@ -110,8 +110,9 @@ class MQAGraphDataset(DGLDataset):
             for line in fin:
                 sentence = line.rstrip()
                 seg = sentence.split('\t')
-                texts.append(seg[1])
-                labels.append(seg[0])
+                if len(seg) > 1:
+                    texts.append(seg[1])
+                    labels.append(seg[0])
         return texts, labels
 
     def data_source_read(self):

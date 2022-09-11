@@ -85,7 +85,7 @@ def finetune_mode(file_path, save_path, model="bert", device="cpu",
             for line in fin:
                 sentence = line.rstrip()
                 seg = sentence.split('\t')
-                if (not dedup) or (seg[1] not in dedup_set):
+                if (not dedup) or (len(seg) > 1 and seg[1] not in dedup_set):
                     data.append(seg[1])
                     labels.append(int(seg[0]))
                     if add_trans:

@@ -78,8 +78,8 @@ class PosTagger:
         return tag_results_ud
 
     def _pos_tag_en_init(self, model_path, *args, **kwargs):
-        path_to_model = os.path.join(model_path, "..", "stanford-postagger-full-2020-11-17/models", "english-left3words-distsim.tagger")
-        path_to_jar = os.path.join(model_path, "..", "stanford-postagger-full-2020-11-17", "stanford-postagger-4.2.0.jar")
+        path_to_model = os.path.join(model_path, "stanford-postagger-full-2020-11-17/models", "english-left3words-distsim.tagger")
+        path_to_jar = os.path.join(model_path, "stanford-postagger-full-2020-11-17", "stanford-postagger-4.2.0.jar")
         return StanfordPOSTagger(path_to_model, path_to_jar)
 
     def _pos_tag_en(self, texts):
