@@ -64,7 +64,7 @@ class HeteroTextGCN(nn.Module):
                     for t in x}
 
             sampler = dgl.dataloading.MultiLayerFullNeighborSampler(1)
-            dataloader = dgl.dataloading.NodeDataLoader(
+            dataloader = dgl.dataloading.DataLoader(
                 g, nids, sampler,
                 batch_size=self.valid_batch_size,
                 shuffle=True,

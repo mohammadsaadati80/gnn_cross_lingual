@@ -58,7 +58,7 @@ def train(args):
     logger.info(dataset.g)
 
     sampler = dgl.dataloading.MultiLayerFullNeighborSampler(args.num_layers)
-    dataloader = dgl.dataloading.NodeDataLoader(
+    dataloader = dgl.dataloading.DataLoader(
         dataset.g, dataset.get_ids("train"), sampler,
         batch_size=args.train_batch_size,
         shuffle=True,

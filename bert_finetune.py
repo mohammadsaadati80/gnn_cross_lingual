@@ -308,7 +308,7 @@ class TransformerEncoder:
         for fname in os.listdir(self.cache_path):
             if fname.endswith(".cat"):
                 text_catalog[fname[:-4]] = []
-                with open(os.path.join(self.cache_path, fname)) as fin:
+                with open(os.path.join(self.cache_path, fname), 'rb') as fin:
                     for line in fin.read().splitlines():
                         text_emb_files[line] = fname[:-4]
                         text_catalog[fname[:-4]].append(line)
@@ -324,8 +324,8 @@ class TransformerEncoder:
             catalog_path = os.path.join(self.cache_path, f"{save_time}_{i}.cat")
             emb_path = os.path.join(self.cache_path, f"{save_time}_{i}.npy")
             np.save(emb_path, chunk_embeddings)
-            with open(catalog_path, "w") as fout:
-                fout.write("\n".join(chunk_texts))
+            with open(catalog_path, "wb") as fout:
+                fout.write("\n".join(chunk_texts).encode('utf-8').strip())
             i += 1
     
     def embed_sentences(self, texts):
